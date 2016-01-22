@@ -20,7 +20,7 @@ def adjust_file(filename, seconds):
 
 
 def main():
-    adjust_file("The Man In The High Castle S01E04.srt", -15)
+    adjust_file("srt/The Man In The High Castle S01E04.srt", -15)
 
 
 if __name__ == "__main__":
