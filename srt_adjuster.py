@@ -19,4 +19,9 @@ def adjust_file(filename, seconds):
         print(adjust(line, seconds), file=new_file)
 
 
-adjust_file("Marvels.Jessica.Jones.S01E05.720p.WebRip.x264-2HD.srt", 3)
+def main():
+    adjust_file("The Man In The High Castle S01E04.srt", -15)
+
+
+if __name__ == "__main__":
+    main()
