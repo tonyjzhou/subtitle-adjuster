@@ -1,6 +1,6 @@
 import unittest
 
-from adjuster.srt_adjuster import make_new_filename
+from src.srt_adjuster import make_new_filename
 
 
 class TestSrtAdjuster(unittest.TestCase):
