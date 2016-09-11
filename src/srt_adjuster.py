@@ -1,32 +1,34 @@
 from __future__ import print_function
 
 import logging
-import os
 
 from line_adjuster import adjust
 from log_config import config_logger
 
 
-def make_new_filename(filename):
-    base, extension = os.path.splitext(filename)
-    logging.debug("base=%s" % base)
-    logging.debug("extension=%s" % extension)
-    return '{0}_new{1}'.format(base, extension)
-
-
-def adjust_file(filename, seconds):
-    new_filename = make_new_filename(filename)
-
-    with open(filename, "r") as srt_file:
-        with open(new_filename, "w") as new_file:
-            for line in srt_file.readlines():
+def adjust_file(srt_original, srt_new, seconds):
+    with open(srt_original, "r", encoding='utf-8') as orig_file:
+        with open(srt_new, "w", encoding='utf-8') as new_file:
+            for line in orig_file.readlines():
                 print(adjust(line, seconds), file=new_file)
-    logging.info("Generated new srt as %s", new_filename)
+    logging.info("Generated new srt as %s", srt_new)
+
+
+def user_input():
+    srt_original = input('Enter full srt original file path: ')
+    srt_new = input('Enter full srt new file path: ')
+    seconds = input('Enter seconds to add to or remove from (negative number) original srt: ')
+
+    logging.debug("srt_original=%s", srt_original)
+    logging.debug("srt_new=%s", srt_new)
+    logging.debug("seconds=%s", seconds)
+
+    return srt_original, srt_new, seconds
 
 
 def main():
     config_logger()
-    adjust_file("srt/Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].srt", 22)
+    adjust_file(*user_input())
 
 
 if __name__ == "__main__":

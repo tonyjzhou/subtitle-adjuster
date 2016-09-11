@@ -1,6 +1,5 @@
-import re
-
 import datetime
+import re
 
 
 def adjust(line, seconds):
@@ -16,5 +15,5 @@ def adjust(line, seconds):
 def adjust_time(seconds, time_string):
     time_format = "%H:%M:%S,%f"
     time = datetime.datetime.strptime(time_string, time_format)
-    adjusted_time = time + datetime.timedelta(0, seconds)
+    adjusted_time = time + datetime.timedelta(0, int(seconds))
     return adjusted_time.strftime(time_format).replace('000', '')
