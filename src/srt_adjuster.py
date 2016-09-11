@@ -14,7 +14,7 @@ def adjust_file(srt_original, srt_new, seconds):
     logging.info("Generated new srt as %s", srt_new)
 
 
-def user_input():
+def ask_user_input():
     srt_original = input('Enter full srt original file path: ')
     srt_new = input('Enter full srt new file path: ')
     seconds = input('Enter seconds to add to or remove from (negative number) original srt: ')
@@ -28,7 +28,7 @@ def user_input():
 
 def main():
     config_logger()
-    adjust_file(*user_input())
+    adjust_file(*ask_user_input())
 
 
 if __name__ == "__main__":
