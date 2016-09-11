@@ -4,7 +4,7 @@ import logging
 import os
 
 from line_adjuster import adjust
-from logconfig import config_logger
+from log_config import config_logger
 
 
 def make_new_filename(filename):
@@ -26,7 +26,7 @@ def adjust_file(filename, seconds):
 
 def main():
     config_logger()
-    adjust_file("srt/Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].srt", 19)
+    adjust_file("srt/Captain.America.Civil.War.2016.1080p.BluRay.x264-[YTS.AG].srt", 22)
 
 
 if __name__ == "__main__":
