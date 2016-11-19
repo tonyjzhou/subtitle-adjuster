@@ -23,9 +23,8 @@ def make_new_base_name(srt_original):
 
 
 def ask_user_input():
-    srt_original = get_valid_original_file_name()
-    srt_new_file_base_name = make_new_base_name(srt_original)
-    srt_new = get_valid_new_path_name(srt_new_file_base_name)
+    srt_original = ask_valid_original_file_name()
+    srt_new = ask_valid_new_path_name(make_new_base_name(srt_original))
     seconds = input('Enter seconds to add to or remove from (negative number) original srt (e.g. 1 or -1): ')
 
     logging.debug("srt_original=%s", srt_original)
@@ -35,7 +34,7 @@ def ask_user_input():
     return srt_original, srt_new, seconds
 
 
-def get_valid_new_path_name(srt_new_file_base_name):
+def ask_valid_new_path_name(srt_new_file_base_name):
     while True:
         path_name = input('Enter path you want the new srt file to be in (e.g. /Users/tonyzhou/Movies): ')
 
@@ -54,7 +53,7 @@ def is_valid_file_type(file_name):
     return extension.lower() == '.srt'
 
 
-def get_valid_original_file_name():
+def ask_valid_original_file_name():
     while True:
         file_name = input('Enter full srt original file path (e.g. /Users/tonyzhou/Movies/abc.srt): ')
 
