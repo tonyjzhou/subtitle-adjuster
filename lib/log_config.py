@@ -4,7 +4,7 @@ import logging
 def config_logger(logfile='logs/subtitle-adjuster.log'):
     log_formatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
     root_logger = logging.getLogger()
-    root_logger.setLevel(logging.DEBUG)
+    root_logger.setLevel(logging.INFO)
 
     add_file_handler(log_formatter, root_logger, logfile)
     add_console_handler(log_formatter, root_logger)

@@ -13,13 +13,22 @@ from lib.files import make_new_base_name, is_valid_file_type, adjust_file
 def ask_user_input():
     srt_original = ask_valid_original_file_name()
     srt_new_path = ask_valid_new_path_name()
-    seconds = input('Enter seconds to add to or remove from (negative number) original srt (e.g. 1 or -1): ')
+    seconds = ask_valid_seconds()
 
     logging.debug("srt_original=%s", srt_original)
     logging.debug("srt_new_path=%s", srt_new_path)
     logging.debug("seconds=%s", seconds)
 
     return srt_original, srt_new_path, seconds
+
+
+def ask_valid_seconds():
+    while True:
+        value = input('Enter seconds to add to or remove from (negative number) original srt (e.g. 1 or -1): ')
+        try:
+            return int(value)
+        except ValueError:
+            print('Invalid integer value: "%s"\nPlease try again ...\n' % value)
 
 
 def ask_valid_new_path_name():
