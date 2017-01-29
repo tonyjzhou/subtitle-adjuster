@@ -1,11 +1,13 @@
+#!/usr/bin/env python3
+
 from __future__ import print_function
 
 import logging
 import os
 import os.path
 
-from line_adjuster import adjust
-from log_config import config_logger
+from lib.line_adjuster import adjust
+from lib.log_config import config_logger
 
 
 def adjust_file(srt_original, srt_new, seconds):
@@ -19,7 +21,7 @@ def adjust_file(srt_original, srt_new, seconds):
 def make_new_base_name(srt_original):
     basename = os.path.basename(srt_original)
     first, second = os.path.splitext(basename)
-    return first + '.new.' + second
+    return first + '.new' + second
 
 
 def ask_user_input():
@@ -36,7 +38,7 @@ def ask_user_input():
 
 def ask_valid_new_path_name(srt_new_file_base_name):
     while True:
-        path_name = input('Enter path you want the new srt file to be in (e.g. /Users/tonyzhou/Movies): ')
+        path_name = input('Enter path for the new srt file (e.g. /Users/tonyzhou/Movies): ')
 
         if os.path.isdir(path_name):
             srt_new_file_name = os.path.join(path_name, srt_new_file_base_name)

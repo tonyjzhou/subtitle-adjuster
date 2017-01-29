@@ -1,6 +1,6 @@
 import unittest
 
-from src.line_adjuster import adjust
+from lib.line_adjuster import adjust
 
 
 class TestLineAdjuster(unittest.TestCase):
