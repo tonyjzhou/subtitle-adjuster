@@ -35,3 +35,4 @@ def ask_valid_original_file_name():
 
 def quit_gracefully():
     print('Bye')
+    exit(0)
