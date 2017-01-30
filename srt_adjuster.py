@@ -6,8 +6,8 @@ import logging
 import os
 import os.path
 
+from lib.files import is_valid_file_type, adjust_file
 from lib.log_config import config_logger
-from lib.files import make_new_base_name, is_valid_file_type, adjust_file
 
 
 def ask_user_input():
@@ -51,9 +51,17 @@ def ask_valid_original_file_name():
             print('\n\tInvalid original file: "%s"\n\tPlease try again ...\n' % file_name)
 
 
+def quit_gracefully():
+    print('Bye')
+
+
 def main():
     config_logger()
-    adjust_file(*ask_user_input())
+
+    try:
+        adjust_file(*ask_user_input())
+    except EOFError:
+        quit_gracefully()
 
 
 if __name__ == "__main__":
