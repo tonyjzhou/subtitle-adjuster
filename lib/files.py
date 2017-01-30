@@ -25,6 +25,3 @@ def make_backup_file(srt_original):
     return srt_original + '.bak'
 
 
-def is_valid_file_type(file_name):
-    _, extension = os.path.splitext(file_name)
-    return extension.lower() == '.srt'
