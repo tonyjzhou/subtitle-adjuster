@@ -15,3 +15,4 @@ With this simple program, you can adjust the subtitle show up time by seconds.
 * ~~Provide a way quit~~
 * ~~Remove the unnecessary step to provide a new path; always default to the current path of the original srt file~~
 * ~~Enable command line mode~~
+* ~~Move the logs to the directory where the program is run~~

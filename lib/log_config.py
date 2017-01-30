@@ -1,7 +1,7 @@
 import logging
 
 
-def config_logger(logfile='logs/subtitle-adjuster.log'):
+def config_logger(logfile='subtitle-adjuster.log'):
     log_formatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
     root_logger = logging.getLogger()
     root_logger.setLevel(logging.INFO)
