@@ -22,8 +22,8 @@ def make_srt_new(srt_new_path, srt_original):
     return srt_new
 
 
-def make_new_base_name(srt_original):
-    basename = os.path.basename(srt_original)
+def make_new_base_name(full_file_path):
+    basename = os.path.basename(full_file_path)
     first, second = os.path.splitext(basename)
     return first + '.new' + second
 
