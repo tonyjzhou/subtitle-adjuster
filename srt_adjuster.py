@@ -12,14 +12,12 @@ from lib.log_config import config_logger
 
 def ask_user_input():
     srt_original = ask_valid_original_file_name()
-    srt_new_path = ask_valid_new_path(os.path.dirname(srt_original))
     seconds = ask_valid_seconds()
 
     logging.debug("srt_original=%s", srt_original)
-    logging.debug("srt_new_path=%s", srt_new_path)
     logging.debug("seconds=%s", seconds)
 
-    return srt_original, srt_new_path, seconds
+    return srt_original, seconds
 
 
 def ask_valid_seconds():
@@ -29,19 +27,6 @@ def ask_valid_seconds():
             return int(value)
         except ValueError:
             print('\n\tInvalid integer value: "%s"\n\tPlease try again ...\n' % value)
-
-
-def ask_valid_new_path(default_path):
-    while True:
-        path = input('Enter path for the new srt (e.g. /Users/tonyzhou/Movies): ')
-
-        if not path:
-            return default_path
-
-        if os.path.isdir(path):
-            return path
-        else:
-            print('\n\tInvalid new path: "%s"\n\tPlease try again ...\n' % path)
 
 
 def ask_valid_original_file_name():

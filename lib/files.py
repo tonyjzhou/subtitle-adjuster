@@ -6,16 +6,12 @@ import os
 from lib.line_adjuster import adjust
 
 
-def adjust_file(srt_original, srt_new_path, seconds):
-    backup_file_name = backup_original_file(srt_original)
+def adjust_file(srt_original, seconds):
+    backup_file_name = make_backup_file(srt_original)
+    os.rename(srt_original, backup_file_name)
+    logging.debug("Generated backup file as %s", backup_file_name)
     update_new_time(backup_file_name, seconds, srt_original)
-    logging.info("Generated new srt as %s", srt_original)
-
-
-def backup_original_file(srt_original):
-    backup_file = make_backup_file(srt_original)
-    os.rename(srt_original, backup_file)
-    return backup_file
+    logging.info("Adjusted the time by %d seconds in %s", seconds, srt_original)
 
 
 def update_new_time(backup_file_name, seconds, new_file_name):
