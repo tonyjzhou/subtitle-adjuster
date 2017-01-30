@@ -2,30 +2,31 @@
 
 import logging
 import os
+
 from lib.line_adjuster import adjust
 
 
 def adjust_file(srt_original, srt_new_path, seconds):
-    srt_new = make_srt_new(srt_new_path, srt_original)
+    backup_file_name = backup_original_file(srt_original)
+    update_new_time(backup_file_name, seconds, srt_original)
+    logging.info("Generated new srt as %s", srt_original)
 
-    with open(srt_original, "r", encoding='utf-8') as orig_file:
-        with open(srt_new, "w", encoding='utf-8') as new_file:
+
+def backup_original_file(srt_original):
+    backup_file = make_backup_file(srt_original)
+    os.rename(srt_original, backup_file)
+    return backup_file
+
+
+def update_new_time(backup_file_name, seconds, new_file_name):
+    with open(backup_file_name, "r", encoding='utf-8') as orig_file:
+        with open(new_file_name, "w", encoding='utf-8') as new_file:
             for line in orig_file.readlines():
                 print(adjust(line, seconds), file=new_file)
 
-    logging.info("Generated new srt as %s", srt_new)
 
-
-def make_srt_new(srt_new_path, srt_original):
-    srt_new_file_base_name = make_new_base_name(srt_original)
-    srt_new = os.path.join(srt_new_path, srt_new_file_base_name)
-    return srt_new
-
-
-def make_new_base_name(full_file_path):
-    basename = os.path.basename(full_file_path)
-    first, second = os.path.splitext(basename)
-    return first + '.new' + second
+def make_backup_file(srt_original):
+    return srt_original + '.bak'
 
 
 def is_valid_file_type(file_name):
