@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
+import logging
 import os
+
+
+def validate(srt_original, seconds):
+    if not validate_srt_file(srt_original):
+        logging.error('Invalid original file: "%s"', srt_original)
+        exit(0)
+    if not validate_seconds(seconds):
+        logging.error('Invalid integer value for seconds: "%s"', seconds)
+        exit(0)
 
 
 def is_valid_file_type(file_name):
