@@ -9,7 +9,7 @@ With this simple program, you can adjust the subtitle show up time by seconds.
 * ~~Add logging~~
 * ~~Add test cases to cover all modules~~
     * ~~files~~
-* Provide prompting for user to input the output path he want the new srt to be
+* ~~Provide prompting for user to input the output path he want the new srt to be~~
     * ~~When no output path provided, it will be defaulted to the same path of the original file~~
     * ~~Backup the original srt file and update the original srt file with the new time~~
 * ~~Provide a way quit~~
