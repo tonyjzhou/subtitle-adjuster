@@ -11,9 +11,11 @@ def main():
     config_logger()
 
     try:
-        adjust_file(*ask_user_input())
+        srt_original, seconds = ask_user_input()
     except EOFError:
         quit_gracefully()
+
+    adjust_file(srt_original, seconds)
 
 
 if __name__ == "__main__":
